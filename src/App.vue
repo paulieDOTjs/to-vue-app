@@ -10,38 +10,44 @@
 import Todos from "./components/Todos";
 import Header from "./components/Layout/Header";
 import AddToDo from "./components/AddToDo";
+import axios from "axios";
 
 export default {
   name: "App",
   components: { Todos, Header, AddToDo },
   data() {
     return {
-      todos: [
-        {
-          id: 1,
-          title: "To do 1",
-          completed: false
-        },
-        {
-          id: 2,
-          title: "To do 2",
-          completed: false
-        },
-        {
-          id: 3,
-          title: "To do 3",
-          completed: false
-        }
-      ]
+      todos: []
     };
   },
   methods: {
     deleteTodo(id) {
-      this.todos = this.todos.filter(todo => todo.id !== id);
+      axios
+        .delete(`https://jsonplaceholder.typicode.com/todos/` + id)
+        .then(res => {
+          console.log(res.status);
+          return (this.todos = this.todos.filter(todo => todo.id !== id));
+        })
+        .catch(err => console.log(err));
     },
     AddToDo(newToDo) {
-      this.todos = [...this.todos, newToDo];
+      const { title, completed } = newToDo;
+
+      axios
+        .post("https://jsonplaceholder.typicode.com/todos", {
+          title,
+          completed
+        })
+        .then(res => (this.todos = [...this.todos, res.data]))
+        .catch(err => console.log(err));
     }
+  },
+  created() {
+    console.log("hi");
+    axios
+      .get("https://jsonplaceholder.typicode.com/todos?_limit=10")
+      .then(res => (this.todos = res.data))
+      .catch(err => console.log(err));
   }
 };
 </script>
