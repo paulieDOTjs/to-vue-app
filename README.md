@@ -1,24 +1,16 @@
 # to-vue-app
 
-## Project setup
-```
-yarn install
-```
+# Description
+I created this app in conjunction with a youtube tutorial found here: https://www.youtube.com/watch?v=Wy9q22isx3U
 
-### Compiles and hot-reloads for development
-```
-yarn serve
-```
+# Installation
+To start app open the app  in terminal, type in 'yarn install.' When that is done type in 'yarn start serve'
 
-### Compiles and minifies for production
-```
-yarn build
-```
+# Usage
+This app was a learning experince more than an actual usage app. It pull from a pseudo database so there is no ability to save anything.
 
-### Lints and fixes files
-```
-yarn lint
-```
+# Credits
+Thank you to Webnoob for the tutorial found here: https://www.youtube.com/watch?v=Wy9q22isx3U
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+# License
+MIT
